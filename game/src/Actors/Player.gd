@@ -3,7 +3,14 @@ extends CharacterBody2D
 @export var speed: = Vector2(400.0, 500.0)
 @export var gravity: = 3500.0
 @export var stomp_impulse: = 600.0
+@onready var animation = get_node("AnimationPlayer")
+@onready var sprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var hurtbox = get_node("EnemyDetector/Hurtbox")
+@onready var stompbox = get_node("StompDetector/Stompbox")
 
+func _ready():
+	animation.play("idle")
+	sprite.flip_h = true
 
 func _on_StompDetector_area_entered(_area: Area2D) -> void:
 	velocity = calculate_stomp_velocity(velocity, stomp_impulse)
@@ -38,6 +45,9 @@ func calculate_move_velocity(
 	) -> Vector2:
 	var _velocity: = linear_velocity
 	_velocity.x = _speed.x * direction.x
+	#if velocity.x:
+		#if velocity.x < 0
+			
 	if direction.y != 0.0:
 		_velocity.y = _speed.y * direction.y
 	if is_jump_interrupted:
