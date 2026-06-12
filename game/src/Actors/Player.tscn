@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://chul7y2soacyw"]
+
+[ext_resource type="Script" uid="uid://cbwu0h6rm1bcf" path="res://src/Actors/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c32l5g5lnei56" path="res://assets/player.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(80, 82)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(91.2956, 83.543)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(96, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=2101689356]
+collision_mask = 14
+script = ExtResource("1")
+stomp_impulse = 1600.0
+speed = Vector2(700, 1350)
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1721329922]
+zoom = Vector2(0.5, 0.5)
+limit_left = 0
+limit_bottom = 1080
+limit_smoothed = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=23023237]
+texture = ExtResource("2")
+offset = Vector2(0, -48.3333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=801401184]
+position = Vector2(0, -41)
+shape = SubResource("2")
+
+[node name="EnemyDetector" type="Area2D" parent="." unique_id=1723180391]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector" unique_id=1353264037]
+modulate = Color(0.337255, 0.223529, 1, 1)
+position = Vector2(0, -48)
+shape = SubResource("3")
+
+[node name="StompDetector" type="Area2D" parent="." unique_id=1894947524]
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector" unique_id=522404777]
+modulate = Color(0.337255, 0.223529, 1, 1)
+shape = SubResource("4")
+
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
+[connection signal="area_entered" from="StompDetector" to="." method="_on_StompDetector_area_entered"]
