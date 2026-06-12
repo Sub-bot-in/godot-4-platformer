@@ -44,13 +44,13 @@ next_scene = ExtResource("6")
 position = Vector2(1049, 661)
 
 [node name="Coin25" parent="Coins" unique_id=466098532 instance=ExtResource("7")]
-position = Vector2(1082, 466)
+position = Vector2(610, 588)
 
 [node name="Coin26" parent="Coins" unique_id=2001277134 instance=ExtResource("7")]
-position = Vector2(782, 505)
+position = Vector2(1115, 159)
 
 [node name="Coin27" parent="Coins" unique_id=488277900 instance=ExtResource("7")]
-position = Vector2(988, 294)
+position = Vector2(745, 221)
 
 [node name="Coin2" parent="Coins" unique_id=1101882497 instance=ExtResource("7")]
 position = Vector2(1370, 580)
